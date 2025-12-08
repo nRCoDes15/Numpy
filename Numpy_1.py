@@ -70,3 +70,14 @@ a2 = np.arange(1,11,2)
 print(a2)
 a3 = np.linspace(1,10,10)
 print('The array of linspace matrix :\n',a3)
+
+#4. Adding some more commands
+a1 = np.empty((2,2))        # This creates an uninitialized array which contains garbage values.
+print('This array created using empty : \n',a1)
+a2= np.diag([1,2,3]) 
+a3= np.diag([[1,2,3],[4,5,6]])
+print('This array created using diagonal : \n',a2)
+print('This array created using diagonal : \n',a3)
+
+a = np.fromfile('.\\commands.txt', sep=' ')
+print(a)
