@@ -75,3 +75,22 @@ print('*******************Data Types ********************')
     6. Object: It allows mixed type, but numpy becomes slow.
         
 '''
+
+print('**************copy vs view****************')
+a = np.array([1,2,3,4,5,6])
+b=a.copy()
+c=a.view()
+print('The original array',a)
+print('The copied array',b)
+print('The viewed array',c)
+
+# To check whether it is a copied or view there is an attribute "base".
+# If base returns None, Then array owns data or it return the original object
+print('Checking b base : ',b.base)       #None
+print('Checking c base : ',c.base)       #[original array]
+
+a[0]=0
+c[-1]=7
+print(b)        # copy wont modify bcoz it owns an array
+print(c)        # view will be modified if the original array changed
+print(a)        
