@@ -1,3 +1,6 @@
+import numpy as np
+
+print('*************Shape And Reshape****************')
 arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 print(arr.shape)
 
@@ -40,3 +43,54 @@ print(b.base)
 arr = np.arange(10)[::2]  # sliced, non-contiguous
 r = arr.ravel()
 print(r.base)
+
+print('******************* nditer and ndenumerate**************************')
+
+arr = np.array([1, 2, 3])
+for i in arr:
+    print(i,end=' ')
+print()
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+for i in arr:
+    for j in i:
+        print(j,end=' ')
+print()      
+arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+for i in arr:
+    for j in i:
+        for k in j:
+            print(k,end=' ')
+print()
+# Hence instead of this we can use nditer
+arr = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])
+for i in np.nditer(arr):
+    print(i,end = ' ')
+print()
+
+'''
+We can use os_dtypes argument to change the datatype of an element.
+flags=['buffered'] allows NumPy to use temporary memory to safely convert each integer into a string 
+    during iteration because the original array cannot be modified in-place to store string values.
+'''
+
+arr = np.array([1, 2, 3])
+for i in np.nditer(arr,flags=['buffered'],op_dtypes='S'):
+    print(i,i.dtype,end = ' ')
+print()
+
+# iterating with different step size
+arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+for i in np.nditer(arr[:,::2]):
+    print(i,end=' ')
+print()
+    
+# use of np.ndenumerate
+arr = np.array([1, 2, 3])  # for 1-D array
+for i,j in np.ndenumerate(arr):
+    print(i,j,end=' ')
+print()
+
+arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
+for i,j in np.ndenumerate(arr): # for 2-D array
+    print(i,j,end=' ')
+print()
