@@ -94,3 +94,63 @@ arr = np.array([[1, 2, 3, 4], [5, 6, 7, 8]])
 for i,j in np.ndenumerate(arr): # for 2-D array
     print(i,j,end=' ')
 print()
+
+
+print('***********************Joins in Numpy********************************')
+'''
+    1. np.concatenate() : It does not create a new axis. It join array along with existing axis
+'''
+a1 = np.array([1,1,1,1])
+a2 = np.array([5,5,5,5])
+res = np.concatenate((a1,a2),axis=0)
+print('The result is a concatenate of axis 0 : ',res)       # can't use axis=1 coz this is an 1-D array 
+
+a1 = np.array([[1,2],[3,4]])
+a2 = np.array([[7,8],[9,10]])
+a3 = np.concatenate((a1,a2),axis=1)
+print(a3)
+
+'''
+    1. np.stack() : same as concatenate function which joins the array but it create new axis
+'''
+print('-------------------stack--------------------')
+a = np.array([[1, 2],
+              [3, 4]])
+
+b = np.array([[5, 6],
+              [7, 8]])
+
+a3 = np.stack((a,b),axis=2)
+print(a3)
+print(a3.shape)
+
+'''
+    1. np.vstack() : vertically(row wise) stack the arrays
+'''
+a = np.array([[1, 2],
+              [3, 4]])
+
+b = np.array([[5, 6],
+              [7, 8]])
+res1 = np.vstack((a,b))
+print(res1)
+
+'''
+    1. np.hstack() : horizontally(column wise) stack the arrays
+'''
+res2 = np.hstack((a,b))
+print(res2)
+
+'''
+    1. np.dstack() : depth-wise stack the arrays
+'''
+res3 = np.dstack((a,b))
+print(res3)
+
+x = np.array([1,2,3])
+y = np.array([4,5,6])
+print(np.column_stack((x,y)))   # same as hstack
+
+print(np.row_stack((x,y)))      # same as vstack
+
+# Note : stack and dstack creates an new axis
