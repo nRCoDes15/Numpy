@@ -154,3 +154,33 @@ print(np.column_stack((x,y)))   # same as hstack
 print(np.row_stack((x,y)))      # same as vstack
 
 # Note : stack and dstack creates an new axis
+
+print('*******************Splitting Numpy array*********************')
+print('------------Splitting 1-D array-----------------------')
+a = np.array([1,2,3,4,5,6])
+res1 = np.split(a,2)
+res2 = np.array_split(a,4)
+print(res1)
+print(res2)
+
+print('------------Splitting 2-D array-----------------------')
+a = np.array([[1,2,3],[4,5,6],[7,8,9],[10,11,12]])
+res3 = np.split(a,2,axis=0)
+print(res3)
+
+res4 = np.split(a,3,axis=1)
+print(res4)
+
+print('--------------------')
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15], [16, 17, 18]])
+res5 = np.hsplit(arr,3)
+print(res5)
+
+res6 = np.vsplit(arr,6)
+print(res6)
+
+print('--------------------')
+arr = np.arange(1,17).reshape(4,2,2)
+print(arr)
+res6 = np.dsplit(arr,2)
+print(res6)
